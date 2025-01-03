@@ -1,7 +1,6 @@
 import UI from "./utils/utils.js";
 import { PostsApi } from "./apis/post_api.js";
 import { UsersApi } from "./apis/user_api.js";
-// import { FileUpload } from "./apis/file_upload_api.js";
 
 const postsApi =  new PostsApi('https://simple-blog-api-red.vercel.app');
 const usersApi = new UsersApi('https://simple-blog-api-red.vercel.app');

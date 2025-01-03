@@ -1,9 +1,7 @@
 import UI from "./utils/utils.js";
 import {Storage} from "./utils/Storage.js";
-// import {Api} from "./utils/api.js";
-//////////////
 import { AuthApi } from "./apis/auth_api.js";
-//////////
+
 
 const api = new AuthApi('https://simple-blog-api-red.vercel.app');
 
@@ -28,50 +26,48 @@ createContainer();
 
 
 
-
-
 async function handleLogin(event) {
     event.preventDefault(); 
     const inputEmail = document.querySelector(".form__box__email");
-    const inputPass = document.querySelector(".form__box__password");
+    const inputPass = document.querySelector(".form__box__password") ;
     const email = inputEmail.value.trim();
-    const password = inputPass.value.trim();
+    const password =  inputPass.value.trim();
 
-    const credentials = {
-        email, 
+    const credentials ={
+        email , 
         password
       }
 
-    inputEmail.style.borderColor = '';
-    inputPass.style.borderColor = '';
+    inputEmail.style.borderColor = '' ;
+    inputPass.style.borderColor =  '';
 
     let errorMessage = '';
 
     if (!email) {
         inputEmail.style.borderColor = 'red';
-        errorMessage += 'Please enter a valid username.\n';
+        errorMessage +=  'Please enter a valid username.\n' ;
     }
 
     
 
-    if (!password || password.length <= 5) {
+    if (!password || password.length <= 5){
         inputPass.style.borderColor = 'red'; 
-        errorMessage += 'Your password must be at least 8 characters long.\n';
+        errorMessage += 'Your password must be at least 8 characters long.\n' ;
     }
 
 
 
-    if (errorMessage) {
+    if (errorMessage){
         alert(errorMessage);
     } else {
 
-        const result = await api.login(credentials);
+        const result = await api.login(credentials) ;
 
         if (result.accessToken && result.user) {
           Storage.setItem('token', result.accessToken);
           Storage.setItem('user', result.user);
-          window.location.assign("home.html");  
-        } else {
+          window.location.assign("home.html") ;  
+        } else{
           alert('Something Wrong')
         }
         
@@ -81,54 +77,3 @@ async function handleLogin(event) {
 
 document.querySelector('.form__box__login').addEventListener('click', handleLogin);
 
-
-
-
-/////////////////////////
-
-
-// gpt
-
- // api.login(credentials)
-        // .then(data => {
-        //     if (data.token) {
-                
-        //         Storage.setItem('userData', JSON.stringify(credentials));
-        //         console.log('userData', JSON.stringify(credentials));
-        //         window.location.href = 'home.html';
-        //     }
-        // })
-        // .catch(error => {
-        //     console.error('Login failed', error);
-        // });
-
-
-// const api = new Api('https://simple-blog-api-red.vercel.app')
-        // .post('/api/auth/login')
-        // .then(data => {
-        //     if(data.token){
-        //         const userData = {
-        //             email: inputEmailValue,
-        //             password: inputPassValue,
-        //             token: data.token  
-        //         };
-
-        //         Storage.setItem('userData', JSON.stringify(userData));
-        //         console.log('userData', JSON.stringify(userData));
-
-        //         window.location.href = 'home.html';
-        //     }
-            
-        // })
-        // .catch(error  =>{
-        //     console.log('Error')
-            
-        // })
-        /////////////////
-
-
-        //lara123 
-    //lara@gmail.com
-
-
-    //anna@gmail.com - anna321

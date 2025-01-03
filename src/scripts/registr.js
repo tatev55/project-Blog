@@ -79,37 +79,4 @@ document.getElementById('formBox__register').addEventListener('submit', async (e
 
 
 
-//jame@gmail.com  
-
-
- // createNewBlog( lastName, firstName, email, userName, password);
-    // setTimeout(() =>{
-    //     window.location.href = 'home.html'
-       
-    // }, 1000)
-
-
-
-
-// function createNewBlog( lastName, firstName, email, userName, password) {
-//     const blogData = {
-//         lastName: lastName,
-//         firstName: firstName ,
-//         email: email,
-//         userName: userName,
-//         password: password
-//     };
-
-//         return new Api('https://simple-blog-api-red.vercel.app')
-//             .post('/api/auth/register', blogData )
-//             .then(blogger => {
-//                 console.log(blogger);
-                
-//                return blogger   
-//             })
-//             .catch(error =>{
-//                 console.error('Error creating post:', error) ;
-//             });    
-
-// }
 
