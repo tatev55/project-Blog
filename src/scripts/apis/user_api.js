@@ -9,7 +9,5 @@ export class UsersApi extends Api{
         return this.get('/api/users')
     }
 
-    getUserById(){
-        return this.get(`/api/users/${userId}`)
-    }
+   
 }
