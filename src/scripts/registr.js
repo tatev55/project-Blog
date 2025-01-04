@@ -41,6 +41,13 @@ document.getElementById('formBox__register').addEventListener('submit', async (e
 
     const fileUploadedFile = await fileUploadApi.upload(image.files[0])
 
+
+    const file = image.files[0];
+    if (file && file.type === 'image/webp') {
+        alert('Please upload an image in a different format (e.g., .jpg or .png). .webp format is not supported.');
+        return; 
+    }
+
    
     if (!lastName || !firstName || !email || !username || !password || !image.files.length){
         alert('Please fill out all fields  ') ;
