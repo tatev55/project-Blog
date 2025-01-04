@@ -1,10 +1,12 @@
 import UI from "./utils/utils.js";
 import { PostsApi } from "./apis/post_api.js";
 import { UsersApi } from "./apis/user_api.js";
+import { Storage } from "./utils/Storage.js";
 
 const postsApi =  new PostsApi('https://simple-blog-api-red.vercel.app');
 const usersApi = new UsersApi('https://simple-blog-api-red.vercel.app');
 
+const user = Storage.getItem('user');
 
 function createBloggerCard(blogger) {
 
@@ -70,10 +72,10 @@ function createContainer() {
                 UI.createElement('i', { class: 'fa-brands fa-hive icon__blog' }),
                 UI.createElement('h1', { class: 'title' }, 'Blog')
             ]),
-            UI.createElement('div', { class: 'linkBox' }, [
+            UI.createElement('div', { class: 'linkBox display-flex jc-space-between ai-center' }, [
                 UI.createElement('a', { class: 'header__link w-200px transition-5 td-none', href: 'registration.html' }, 'Registration'),
                 UI.createElement('a', { class: 'header__link w-150px transition-5 td-none', href: 'index.html' }, 'Login'),
-                UI.createElement('a', { class: 'header__link w-150px transition-5 td-none', href: 'createBlogPost.html' }, 'Create Blog')
+                UI.createElement('a', { class: 'header__link w-200px transition-5 td-none', href: 'createBlogPost.html' , id: 'createButton'}, 'Create Blog')
             ])
         ]),
         UI.createElement('main', { class: 'main w-90 h-80 display-flex jc-space-between' }, [
@@ -113,34 +115,42 @@ function createContainer() {
     usersApi.getUsers().then(user =>{
         renderItems(user, '.bloggers__list', createBloggerCard);
     });
+
+
+    
+    const createButton = document.getElementById('createButton');
+    if(!user){
+        createButton.style.display = 'none'
+    }else{
+        createButton.style.display = 'block'
+    }
 }
 
 
 
-
-
-
-
-
-
-
 function deletePost(postId) {
+    if(!user){
+        alert('You must be logged in to delete a post');
+    }else{
+        return postsApi.deletePost(postId).then(() =>{
+            const postBox = document.getElementById(`post-${postId}`);
+    
+            if(postBox){
+                postBox.remove();
+            }
+        })
+    }
 
-
-    return postsApi.deletePost(postId).then(() =>{
-        const postBox = document.getElementById(`post-${postId}`);
-
-        if(postBox){
-            postBox.remove();
-        }
-    })
+    
     
 }
 
 createContainer();
 
 window.addEventListener('onload', ()=>{
-    const userData = Storage.getItem('userData');
+    const userData = Storage.getItem('user');
+    
+    
 
     if(!userData || !userData.access_token ){
         window.location.href = 'index.html';

@@ -160,23 +160,10 @@ html{
 .formBox__register__input {
     box-shadow: var(--box-shadow-1);
     border-radius: var(--border-radius-10);;
-    /* margin-top: var(--margin-20); */
     border: 0;
     padding: var(--spacing-1);
 }
 
-
-/* .select{
-    box-shadow: var(--box-shadow-1);
-    border-radius: var(--border-radius-10);
-    margin-top: var(--margin-20);
-    border: 0;
-    padding: var(--spacing-1);
-}
-
-.gender{
-    margin: var(--spacing-2) 0;
-} */
 
 .radio-two{
     margin-left: var(--margin-40);
@@ -196,7 +183,6 @@ html{
     color: var(--color-white);
     box-shadow: var(--box-shadow-1);
     border: 0;
-    /* left: var(--margin-40); */
 
 }
 
@@ -240,9 +226,7 @@ html{
     border: none;
     margin-top: var(--spacing-3)
 }
-/* .file-upload{
-    box-shadow: var(--box-shadow-1);
-} */
+
 
 @media screen and (max-width: 1050px){
 

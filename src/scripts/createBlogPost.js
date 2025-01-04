@@ -18,7 +18,7 @@ function createBlogPostContainer() {
             UI.createElement('textarea', { class: 'textarea__newBlogPost w-200px h-200px ta-center', placeholder: 'Post Story' }),
             UI.createElement('input', { type: 'file', class: 'input-url w-200px', id: 'file-upload' }),
             UI.createElement('input', { class: 'input input-authorName w-200px', placeholder: 'Author Name' }),
-            UI.createElement('button', { type: 'submit', class: 'submit-btn submit-createNewPost w-100px h-30px' }, 'Create Blog')
+            UI.createElement('button', { type: 'submit', class: 'submit-btn submit-createNewPost w-100px h-30px', id: 'createNewPost' }, 'Create Blog')
         ])
     ]);
 
@@ -29,9 +29,19 @@ createBlogPostContainer();
 
 const urlParams = new URLSearchParams(window.location.search) ;
 const postId =  urlParams.get('postId') ;
+const user = Storage.getItem('user');
+
+
+
+
 
 
 if (postId){
+
+    if(!user){
+        window.location.href = 'index.html';
+       
+    }
    
     postsApi.getPostById(postId).then(postData =>{
         if (postData) {
@@ -46,6 +56,9 @@ if (postId){
             form.addEventListener('submit',   async function(event){
                 event.preventDefault() ;
 
+                
+                    
+                    
 
                 const title = document.querySelector('.input__title__newBlogPost').value;
                 const story = document.querySelector('.textarea__newBlogPost').value ;
@@ -82,16 +95,20 @@ if (postId){
                 }).catch(error =>{
                     console.error( error);
                 });
+            
             }) ;
+        
         }
-    });
+    
+    })
+
 
 } else{
 
     const form = document.getElementById('createPostForm' );
     form.addEventListener('submit',  async function(event) {
         event.preventDefault() ;
-        const user = Storage.getItem('user');
+     
 
         const title = document.querySelector('.input__title__newBlogPost').value;
         const story = document.querySelector('.textarea__newBlogPost').value;
