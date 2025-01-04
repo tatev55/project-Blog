@@ -2,7 +2,7 @@ import UI from "./utils/utils.js";
 import { AuthApi } from "./apis/auth_api.js"; 
 import { FileUpload } from "./apis/file_upload_api.js"; 
 
-const api = new AuthApi('https://simple-blog-api-red.vercel.app');
+const api = new AuthApi('https://simple-blog-api-red.vercel.app') ;
 const fileUploadApi = new FileUpload('https://simple-blog-api-red.vercel.app')
 
 
