@@ -67,9 +67,9 @@ function createContainer() {
                 UI.createElement('h1', { class: 'title' }, 'Blog')
             ]),
             UI.createElement('div', { class: 'linkBox display-flex jc-space-between ai-center' }, [
-                UI.createElement('a', { class: ' header__link w-200px transition-5 td-none', href: 'registration.html' }, 'Registration'),
-                UI.createElement('a', {class : 'header__link w-150px transition-5 td-none', href: 'index.html' }, 'Login'),
-                UI.createElement('a', { class: 'header__link w-200px transition-5 td-none', href: 'createBlogPost.html', id: 'createButton' }, 'Create Blog')
+                UI.createElement('a', { class: ' header__link w-150px transition-5 td-none', href: 'registration.html' }, 'Registration'),
+                UI.createElement('a', {class : 'header__link w-100px transition-5 td-none', href: 'index.html' }, 'Login'),
+                UI.createElement('a', { class: 'header__link w-170px transition-5 td-none', href: 'createBlogPost.html', id: 'createButton' }, 'Create Blog')
             ])
         ]),
         UI.createElement('main', { class: 'main w-90 h-80 display-flex jc-space-between' }, [
@@ -129,6 +129,7 @@ function deletePost(postId) {
 }
 
 createContainer();
+
 
 
 

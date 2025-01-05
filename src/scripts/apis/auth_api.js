@@ -1,5 +1,8 @@
-export class AuthApi {
+import { BaseApi } from "./base_api.js";
+
+export class AuthApi extends BaseApi{
     constructor(baseUrl) {
+        super(baseUrl);
         this.baseUrl = baseUrl;
     }
 
@@ -9,45 +12,46 @@ export class AuthApi {
     
 
    async login(credentials){
-        return  await fetch(this.buildUrl('/api/auth/login'), {
+    try{
+        const response = await fetch(this.buildUrl('/api/auth/login'), {
             method: 'POST',
-
-            headers: {
-                'Content-Type': 'application/json' ,
+            headers : {
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify(credentials),
         })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Failed to log in: '+ response.statusText);
-            }
-            return response.json() ;
-        })
-
-        .catch(error => {
-            console.error( error);
-           
-        });
+       
+        if(!this.validateResponse(response)){
+            throw new Error(response.statusText);
+        }
+        return response.json()
+    }catch(error){
+        console.log(error);
+        throw error
+        
+    }
+    
     }
 
    async register(user){
-        return  await  fetch(this.buildUrl('/api/auth/register'), {
-            method: 'POST',
-            headers: {
+
+    try{
+        const response = await fetch(this.buildUrl('/api/auth/register'), {
+            method : 'POST', 
+            headers : {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(user) ,
+            body: JSON.stringify(user)
         })
-
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Failed to register: ' + response.statusText);
-            }
-            return response.json();
-        })
-        .catch(error => {
-            console.error( error);
-           
-        });
+        if(!response.ok){
+            throw new Error(response.statusText);
+        }
+        return response;
+    }catch(error){
+        console.log(error);
+        throw error
+        
+    }
+       
     }
 }

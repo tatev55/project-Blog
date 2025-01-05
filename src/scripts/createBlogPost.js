@@ -10,7 +10,7 @@ const fileUploadApi =  new FileUpload('https://simple-blog-api-red.vercel.app') 
 function createBlogPostContainer() {
     const blogPostContainer = UI.createElement('div', { class: 'container__newBlogPost h-600px display-flex jc-space-between fd-column ai-center' },[
         UI.createElement('header', { class: 'header w-90 h-100px display-flex ai-center js-flex-end' }, [
-            UI.createElement('a', { class : 'header__link td-none transition-5', href :  'home.html' }, 'Home')
+            UI.createElement('a', { class : ' header__link td-none transition-5', href :  'home.html' }, 'Home')
         ]),
         UI.createElement('form', { class : 'form__box w-400px h-500px display-flex fd-column jc-space-between ai-center', id: 'createPostForm' },[
             UI.createElement('h2', { class: 'title__newBlogPost' }, 'New Blog Post'),
@@ -25,7 +25,7 @@ function createBlogPostContainer() {
     UI.render(blogPostContainer,  'body');
 }
 
-createBlogPostContainer();
+createBlogPostContainer() ;
 
 const urlParams = new URLSearchParams(window.location.search) ;
 const postId =  urlParams.get('postId') ;
@@ -40,8 +40,6 @@ if(!user ||  !token){
 }
 
 if (postId){
-
-   
     postsApi.getPostById(postId).then(postData =>{
         if (postData) {
             console.log(postData);
@@ -51,17 +49,15 @@ if (postId){
             document.querySelector('.input-authorName').value = postData.authorName ;
             document.querySelector('.submit-btn').textContent =  'Update Blog';
 
-            const form  = document.getElementById('createPostForm');
+            const form  = document.getElementById('createPostForm') ;
             form.addEventListener('submit',   async function(event){
                 event.preventDefault() ;
 
-                
-                    
                 const title = document.querySelector('.input__title__newBlogPost').value;
                 const story = document.querySelector('.textarea__newBlogPost').value ;
                 const authorName =  document.querySelector('.input-authorName').value;
 
-                const imgInput = document.getElementById('file-upload');
+                const imgInput =  document.getElementById('file-upload');
                 let imgUrl = postData.img ; 
 
                 if (imgInput.files[0]){
@@ -103,18 +99,17 @@ if (postId){
 } else{
 
     const form = document.getElementById('createPostForm' );
-    form.addEventListener('submit',  async function(event) {
+    form.addEventListener('submit',  async function(event){
         event.preventDefault() ;
      
 
-        const title = document.querySelector('.input__title__newBlogPost').value;
+        const title = document.querySelector('.input__title__newBlogPost').value ;
         const story = document.querySelector('.textarea__newBlogPost').value;
         const authorName = document.querySelector('.input-authorName').value || `${user.firstName} ${user.lastName}`; 
         const imgInput = document.getElementById('file-upload');
         let imgUrl = '';
 
         if (imgInput.files[0]) {
-            
             try {
                 const uploadedFile = await fileUploadApi.upload(imgInput.files[0]);
                 imgUrl = uploadedFile.url;
