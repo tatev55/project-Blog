@@ -106,7 +106,7 @@ function createContainer() {
         renderItems(user, '.bloggers__list', createBloggerCard);
     });
 
-    const createButton = document.getElementById('createButton');
+    const createButton =  document.getElementById('createButton');
     if (!user || !token) {
         createButton.style.display = 'none' ;
     } else {
@@ -115,9 +115,7 @@ function createContainer() {
 }
 
 function deletePost(postId) {
-    if (!user || !token) {
-        alert('You must be logged in to delete a post' );
-    } else{
+   
         return postsApi.deletePost(postId).then(()=> {
             const postBox = document.getElementById(`post-${postId}`);
 
@@ -125,7 +123,6 @@ function deletePost(postId) {
                 postBox.remove() ;
             }
         });
-    }
 }
 
 createContainer();

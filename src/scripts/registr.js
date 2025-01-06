@@ -62,6 +62,8 @@ document.getElementById('formBox__register').addEventListener('submit', async (e
         password,
         avatar: fileUploadedFile.url
     }
+    console.log(user);
+    
     
   
     api.register(user )

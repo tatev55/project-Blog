@@ -33,7 +33,8 @@ export class AuthApi extends BaseApi{
     
     }
 
-   async register(user){
+
+async register(user){
 
     try{
         const response = await fetch(this.buildUrl('/api/auth/register'), {
@@ -41,7 +42,7 @@ export class AuthApi extends BaseApi{
             headers : {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(user)
+            body: JSON.stringify(user )
         })
         if(!response.ok){
             throw new Error(response.statusText);
@@ -54,4 +55,8 @@ export class AuthApi extends BaseApi{
     }
        
     }
+
+
+
+
 }
