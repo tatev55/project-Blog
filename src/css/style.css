@@ -43,8 +43,14 @@ html{
 .form__box {
     box-shadow: var(--box-shadow-2);
     padding: var(--spacing-1);
+    margin-top: var(--spacing-3);
+  
  
 }
+.form__box  input, textarea, img, button{
+    margin-top: var(--spacing-2);
+}
+
 
 .form__box__email{
     color: var(--primary-color);
@@ -225,6 +231,11 @@ html{
     color: var(--color-white);
     border: none;
     margin-top: var(--spacing-3)
+}
+
+.imgUpdatePost{
+    width: 200px;
+    height: 100px;
 }
 
 

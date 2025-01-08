@@ -2,9 +2,10 @@ import UI from "./utils/utils.js";
 import { PostsApi } from "./apis/post_api.js";
 import { UsersApi } from "./apis/user_api.js" ;
 import { Storage } from "./utils/Storage.js";
+import { baseURL } from "./apis/constant.js";
 
-const postsApi = new PostsApi('https://simple-blog-api-red.vercel.app') ;
-const usersApi = new UsersApi('https://simple-blog-api-red.vercel.app');
+const postsApi = new PostsApi(baseURL) ;
+const usersApi = new UsersApi(baseURL);
 
 const user = Storage.getItem('user');
 const token =  Storage.getItem('token') ; 
@@ -39,9 +40,19 @@ function createPostCard(post) {
     ]);
 
     const deleteButton = postCard.querySelector(`#delete-post-btn-${post.id}`) ;
-    deleteButton.addEventListener('click', () => deletePost(post.id));
-
     const editButton =  postCard.querySelector(`#edit-post-btn-${post.id}`);
+
+
+    if(!user || !token){
+        deleteButton.style.display = 'none';
+        editButton.style.display = 'none';
+    }else{
+        deleteButton.style.display = 'block' ;
+        editButton.style.display =  'block';
+    }
+
+
+    deleteButton.addEventListener('click', () => deletePost(post.id));
     editButton.addEventListener('click', () => {
         window.location.href = `createBlogPost.html?postId=${post.id }`;
     });
@@ -107,8 +118,9 @@ function createContainer() {
     });
 
     const createButton =  document.getElementById('createButton');
+
     if (!user || !token) {
-        createButton.style.display = 'none' ;
+        createButton.style.display = 'none' ;   
     } else {
         createButton.style.display = 'block';
     }

@@ -1,9 +1,10 @@
 import UI from "./utils/utils.js";
 import {Storage} from "./utils/Storage.js";
 import { AuthApi } from "./apis/auth_api.js";
+import { baseURL } from "./apis/constant.js";
 
 
-const api = new AuthApi('https://simple-blog-api-red.vercel.app');
+const api = new AuthApi(baseURL);
 
 function createContainer(){
     const container = UI.createElement('div', {class : 'container w-100 display-flex jc-space-between fd-column ai-center'}, [
