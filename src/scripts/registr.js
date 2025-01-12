@@ -8,6 +8,8 @@ const fileUploadApi = new FileUpload(baseURL)
 
 
 
+
+
 function createRegisterContainer() {
     const container = UI.createElement('div', { class: 'container w-100 display-flex jc-space-between  fd-column ai-center' }, [
         UI.createElement('header', { class: 'header w-90 h-100px display-flex  ai-center js-flex-end' }, [
@@ -81,8 +83,6 @@ document.getElementById('formBox__register').addEventListener('submit', async (e
    
     
 })
-
-
 
 
 

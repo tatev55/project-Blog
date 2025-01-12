@@ -47,7 +47,9 @@ async register(user){
         if(!response.ok){
             throw new Error(response.statusText);
         }
-        return response;
+      
+        const data = await response.json();  
+        return data; 
     }catch(error){
         console.log(error);
         throw error
@@ -55,6 +57,8 @@ async register(user){
     }
        
     }
+
+
 
 
 

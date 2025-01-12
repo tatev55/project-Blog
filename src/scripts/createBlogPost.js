@@ -63,6 +63,7 @@ async function  handleFileUpload(fileInput) {
 if (postId){
     postsApi.getPostById(postId).then(postData =>  {
         if (postData){
+            
             document.querySelector('.input__title__newBlogPost').value = postData.title;
             document.querySelector('.textarea__newBlogPost').value =  postData.story ;
             document.querySelector('.input-authorName').value =  postData.authorName;
@@ -132,7 +133,8 @@ if (postId){
             title,
             story,
             authorName ,
-            img: imgUrl
+            img: imgUrl,
+            userId : user.id
         };
 
         postsApi.createPost(postData)

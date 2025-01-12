@@ -24,19 +24,15 @@ html{
 }
 
 .header__link{
-    font-size: var(--font-size-25);
+    font-size: var(--font-size-20);
     color: var(--primary-color);
     margin-right: var(--margin-30);
     background-color: var(--color-white);
-    padding:0 var(--spacing-3);
+    padding:var(--spacing-1) var(--spacing-3);
     box-shadow: var(--box-shadow-1);
-    box-shadow: var(--box-shadow-4);
+    cursor: pointer;
 }
 
-
-.header__link:hover{
-    transform: scale(1.1);
-}
 
 
 
@@ -74,7 +70,6 @@ html{
 .form__box__login:hover{
     color: var(--color-white);
     background-color: var(--secondary-color);
-    transform: scale(1.1);
 }
 
 
@@ -125,17 +120,12 @@ html{
     box-shadow: var(--box-shadow-2);
 }
 
-.blogger_avatar:hover{
-    transform: scale(1.1);
-}
+    
 
 .post__image{
     box-shadow: var(--box-shadow-3);
 }
-.post__image:hover{
-    transform: scale(1.1);
 
-} 
 
 .section__block__posts{
     padding: var(--spacing-3) 0;

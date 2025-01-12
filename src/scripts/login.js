@@ -74,6 +74,7 @@ async function handleLogin(event) {
         
        
     }
+
 }
 
 document.querySelector('.form__box__login').addEventListener('click', handleLogin);
